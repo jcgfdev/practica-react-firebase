@@ -1,0 +1,18 @@
+import { NavLink } from "react-router-dom";
+import { useUserContext } from "../context/UserContext";
+
+function Navbar() {
+  const { user, setUser } = useUserContext();
+  return (
+    <nav>
+      <NavLink to="/">Home</NavLink>
+      {user &&
+        <>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+          <button onClick={() => setUser(false)}>Logout</button>
+        </>
+      }
+    </nav>
+  );
+}
+export default Navbar;
